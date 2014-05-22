@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2012, Enno Boland
  * socket.io-java-client is a implementation of the socket.io protocol in Java.
- * 
+ *
  * See LICENSE file for more information
  */
 package io.socket;
@@ -36,6 +36,8 @@ public class SocketIO {
 
 	private URL url;
 
+	private String queryString;
+
 	/**
 	 * Instantiates a new socket.io connection. The object connects after
 	 * calling {@link #connect(URL, IOCallback)} or
@@ -48,7 +50,7 @@ public class SocketIO {
 	/**
 	 * Instantiates a new socket.io connection. The object connects after
 	 * calling {@link #connect(IOCallback)}
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 * @throws MalformedURLException
@@ -64,7 +66,7 @@ public class SocketIO {
 	 * Instantiates a new socket.io connection and sets the request headers used
 	 * while connecting the first time for authorizing. The object connects
 	 * after calling {@link #connect(IOCallback)}
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 * @param headers
@@ -86,7 +88,7 @@ public class SocketIO {
 	/**
 	 * Instantiates a new socket.io object and connects to the given url. Do not
 	 * call any of the connect() methods afterwards.
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 * @param callback
@@ -102,7 +104,7 @@ public class SocketIO {
 	/**
 	 * Instantiates a new socket.io object and connects to the given url. Do not
 	 * call any of the connect() methods afterwards.
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 * @param callback
@@ -116,14 +118,14 @@ public class SocketIO {
 	/**
 	 * Instantiates a new socket.io connection. The object connects after
 	 * calling {@link #connect(IOCallback)}
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 */
 	public SocketIO(final URL url) {
 		setAndConnect(url, null);
 	}
-	
+
 	/**
 	 * Set the socket factory used for SSL connections.
 	 * @param socketFactory
@@ -131,11 +133,11 @@ public class SocketIO {
 	public static void setDefaultSSLSocketFactory(SSLContext sslContext) {
 		IOConnection.setSslContext(sslContext);
 	}
-	
+
 	/**
 	 * connects to supplied host using callback. Do only use this method if you
 	 * instantiate {@link SocketIO} using {@link #SocketIO()}.
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 * @param callback
@@ -155,7 +157,7 @@ public class SocketIO {
 	/**
 	 * connects to supplied host using callback. Do only use this method if you
 	 * instantiate {@link SocketIO} using {@link #SocketIO()}.
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 * @param callback
@@ -175,7 +177,7 @@ public class SocketIO {
 	 * connects to an already set host. Do only use this method if you
 	 * instantiate {@link SocketIO} using {@link #SocketIO(String)} or
 	 * {@link #SocketIO(URL)}.
-	 * 
+	 *
 	 * @param callback
 	 *            the callback
 	 */
@@ -191,7 +193,7 @@ public class SocketIO {
 
 	/**
 	 * Sets url and callback and initiates connecting if both are present
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 * @param callback
@@ -227,11 +229,11 @@ public class SocketIO {
 	 * Emits an event to the Socket.IO server. If the connection is not
 	 * established, the call will be buffered and sent as soon as it is
 	 * possible.
-	 * 
+	 *
 	 * @param event
 	 *            the event name
 	 * @param args
-	 *            arguments. can be any argument {@link org.json.JSONArray#put(Object)} can take. 
+	 *            arguments. can be any argument {@link org.json.JSONArray#put(Object)} can take.
 	 */
 	public void emit(final String event, final Object... args) {
 		this.connection.emit(this, event, null, args);
@@ -241,13 +243,13 @@ public class SocketIO {
 	 * Emits an event to the Socket.IO server. If the connection is not
 	 * established, the call will be buffered and sent as soon as it is
 	 * possible.
-	 * 
+	 *
 	 * @param event
 	 *            the event name
 	 * @param ack
 	 *            an acknowledge implementation
 	 * @param args
-	 *            arguments. can be any argument {@link org.json.JSONArray#put(Object)} can take. 
+	 *            arguments. can be any argument {@link org.json.JSONArray#put(Object)} can take.
 	 */
 	public void emit(final String event, IOAcknowledge ack,
 			final Object... args) {
@@ -256,7 +258,7 @@ public class SocketIO {
 
 	/**
 	 * Gets the callback. Internally used.
-	 * 
+	 *
 	 * @return the callback
 	 */
 	public IOCallback getCallback() {
@@ -265,7 +267,7 @@ public class SocketIO {
 
 	/**
 	 * Gets the namespace. Internally used.
-	 * 
+	 *
 	 * @return the namespace
 	 */
 	public String getNamespace() {
@@ -274,7 +276,7 @@ public class SocketIO {
 
 	/**
 	 * Send JSON data to the Socket.io server.
-	 * 
+	 *
 	 * @param json
 	 *            the JSON object
 	 */
@@ -284,7 +286,7 @@ public class SocketIO {
 
 	/**
 	 * Send JSON data to the Socket.io server.
-	 * 
+	 *
 	 * @param ack
 	 *            an acknowledge implementation
 	 * @param json
@@ -296,7 +298,7 @@ public class SocketIO {
 
 	/**
 	 * Send String data to the Socket.io server.
-	 * 
+	 *
 	 * @param message
 	 *            the message String
 	 */
@@ -306,7 +308,7 @@ public class SocketIO {
 
 	/**
 	 * Send JSON data to the Socket.io server.
-	 * 
+	 *
 	 * @param ack
 	 *            an acknowledge implementation
 	 * @param message
@@ -325,7 +327,7 @@ public class SocketIO {
 
 	/**
 	 * Triggers the transport to reconnect.
-	 * 
+	 *
 	 * This had become useful on some android devices which do not shut down
 	 * tcp-connections when switching from HSDPA to Wifi
 	 */
@@ -335,17 +337,17 @@ public class SocketIO {
 
 	/**
 	 * Returns, if a connection is established at the moment
-	 * 
+	 *
 	 * @return true if a connection is established, false if the transport is
 	 *         not connected or currently connecting
 	 */
 	public boolean isConnected() {
 		return this.connection != null && this.connection.isConnected();
 	}
-	
+
 	/**
 	 * Returns the name of the used transport
-	 * 
+	 *
 	 * @return the name of the currently used transport
 	 */
 	public String getTransport() {
@@ -358,24 +360,32 @@ public class SocketIO {
 	 * necessarily the ones set by {@link #addHeader(String, String)} or
 	 * {@link #SocketIO(String, Properties)} but the ones used for the
 	 * handshake.
-	 * 
+	 *
 	 * @return the headers used while handshaking
 	 */
 	public Properties getHeaders() {
 		return headers;
 	}
 
+	public String getQueryString() {
+    		return this.queryString;
+   	}
+
+   	public void setQueryString(String query) {
+     		this.queryString = query;
+   	}
 	/**
 	 * Sets the headers used while handshaking. Internally used. Use
 	 * {@link #SocketIO(String, Properties)} or
 	 * {@link #addHeader(String, String)} instead.
-	 * 
+	 *
 	 * @param headers
 	 *            the headers used while handshaking
 	 */
 	void setHeaders(Properties headers) {
 		this.headers = headers;
 	}
+
 
 	/**
 	 * Adds an header to the {@link #headers}
@@ -393,7 +403,7 @@ public class SocketIO {
 
 	/**
 	 * Returns the header value
-	 * 
+	 *
 	 * @return the header value or {@code null} if not present
 	 */
 	public String getHeader(String key) {

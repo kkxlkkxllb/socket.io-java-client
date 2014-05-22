@@ -1,3 +1,16 @@
+### My Fork Notice
+
+适用于 socket.io v0.9.* , 拥有 query 功能，复制了 (https://github.com/fatshotty/socket.io-java-client)
+```
+SocketIO socket = new SocketIO( url );
+socket.setQueryString( "query=string" ); // set query string without '?'
+// Set headers if needed
+socket.addHeader( "My-Header", "My-Value" );
+socket.connect();
+```
+
+socket.io v1.0 请使用  [nkzawa](https://github.com/nkzawa/socket.io-client.java)
+
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=Gottox&url=https://github.com/Gottox/socket.io-java-client&title=socket.io-java-client&language=&tags=github&category=software)
 
 # Socket.IO-Client for Java
@@ -36,7 +49,7 @@ mv jar/socketio.jar /path/to/your/libs/project
 
 If you're using ant, change your build.xml to include socketio.jar. If you're eclipse, add the jar to your project buildpath.
 
-Afterwards, you'll be able to use this library: 
+Afterwards, you'll be able to use this library:
 
 ``` java
 
@@ -77,7 +90,7 @@ Afterwards, you'll be able to use this library:
 				System.out.println("Server triggered event '" + event + "'");
 			}
 		});
-		
+
 		// This line is cached until the connection is establisched.
 		socket.send("Hello Server!");
 
@@ -87,17 +100,17 @@ For further informations, read the [Javadoc](http://s01.de/hgexport/socket.io-ja
 
  * [Class SocketIO](http://s01.de/~tox/socket.io-java-client/io/socket/SocketIO.html)
  * [Interface IOCallback](http://s01.de/~tox/socket.io-java-client/io/socket/IOCallback.html)
- 
+
 ## Checkout
 
  * with git
- 
+
 		git clone git://github.com/Gottox/socket.io-java-client.git
 
  * with mercurial
- 
- 		hg clone https://bitbucket.org/Gottox/socket.io-java-client 
- 
+
+ 		hg clone https://bitbucket.org/Gottox/socket.io-java-client
+
 Both repositories are synchronized and up to date.
 
 ## Building
@@ -108,7 +121,7 @@ to build a jar-file:
 	ant jar
 	ls jar/socketio.jar
 
-You'll find the socket.io-jar in jar/socketio.jar 
+You'll find the socket.io-jar in jar/socketio.jar
 
 ## Bugs
 
