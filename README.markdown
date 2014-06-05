@@ -9,6 +9,10 @@ socket.addHeader( "My-Header", "My-Value" );
 socket.connect();
 ```
 
+[New Java-websocket](https://github.com/TooTallNate/Java-WebSocket) fixed `disconnect()` loop GC problom
+
+> [Stackoverflow issue](http://stackoverflow.com/questions/21433750/garbage-collector-looping-when-i-use-socket)
+
 socket.io v1.0 请使用  [nkzawa](https://github.com/nkzawa/socket.io-client.java)
 
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=Gottox&url=https://github.com/Gottox/socket.io-java-client&title=socket.io-java-client&language=&tags=github&category=software)
